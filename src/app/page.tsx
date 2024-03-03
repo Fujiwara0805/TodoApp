@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import AddTask from "../components/layout/AddTask";
 import ToDoList from "../components/layout/ToDoList";
 import TASK from "@/types/type";
@@ -8,14 +7,6 @@ const getTaskAll = async () => {
   const res = await fetch("http://localhost:3000/api/task", {
     cache: "no-store",
   });
-  const TaskAllData: TASK[] = await res.json();
-  return TaskAllData;
-};
-
-/* Task追加 */
-const PostTask = async () => {
-  const res = await fetch("http://localhost:3000/api/task",
-  headers:{});
   const TaskAllData: TASK[] = await res.json();
   return TaskAllData;
 };
