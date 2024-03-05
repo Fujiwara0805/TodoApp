@@ -1,5 +1,6 @@
 "use client";
-import React, { use, useRef } from "react";
+import { useRouter } from "next/navigation";
+import React, { useRef } from "react";
 
 /* Task追加 */
 const PostTask = async (content: string | undefined) => {
@@ -17,10 +18,12 @@ const PostTask = async (content: string | undefined) => {
 
 const AddTask = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const router = useRouter();
 
   /* ボタン押下でタスクを追加 */
   const handleClick = async () => {
-    return await PostTask(inputRef.current?.value);
+    await PostTask(inputRef.current?.value);
+    router.refresh();
   };
 
   return (
